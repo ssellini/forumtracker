@@ -1,0 +1,32 @@
+{
+  "exported_at": "2025-01-20T12:00:00",
+  "version": "1.0",
+  "data": {
+    "sources": [
+      {
+        "id": "1234-5678",
+        "name": "Exemple XenForo",
+        "url": "https://esaschicas.com/threads/ejemplo.123/",
+        "forum_type": "xenforo",
+        "cookies": {},
+        "user_agent": ""
+      }
+    ],
+    "scraped_data": {
+      "1234-5678": [
+        {
+          "id": "post-1",
+          "topic_id": "1234-5678",
+          "author": "UsuarioTest",
+          "date": "2025-01-19T10:00:00",
+          "content_original": "Hola, esto es un mensaje de prueba.",
+          "content_translated": "Bonjour, ceci est un message de test.",
+          "url": "https://esaschicas.com/threads/ejemplo.123/#post-1"
+        }
+      ]
+    },
+    "analysis_results": {
+      "last_run": "## Résumé\nCeci est un résumé fictif."
+    }
+  }
+}
