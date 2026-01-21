@@ -7,6 +7,10 @@ import random
 import requests
 from bs4 import BeautifulSoup
 import logging
+import urllib3
+
+# Désactiver les warnings SSL pour le scraping
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class BaseScraper(ABC):
     """Classe abstraite pour les scrapers de forums"""
@@ -79,7 +83,8 @@ class BaseScraper(ABC):
 
         for attempt in range(self.MAX_RETRIES + 1):
             try:
-                response = self.session.get(url, timeout=timeout)
+                # verify=False pour éviter les erreurs SSL sur certains sites
+                response = self.session.get(url, timeout=timeout, verify=False)
 
                 if response.status_code == 403:
                     if attempt < self.MAX_RETRIES:

@@ -5,6 +5,10 @@ from urllib.parse import urlparse
 import logging
 import time
 import random
+import urllib3
+
+# Désactiver les warnings SSL pour le scraping
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 ForumType = Literal["vbulletin", "xenforo", "unknown"]
 
@@ -47,7 +51,7 @@ def detect_forum_type(url: str, cookies: Optional[Dict] = None, user_agent: Opti
         response = None
         for attempt in range(max_retries + 1):
             try:
-                response = requests.get(url, timeout=15, headers=headers, cookies=cookies)
+                response = requests.get(url, timeout=15, headers=headers, cookies=cookies, verify=False)
 
                 if response.status_code == 403:
                     if attempt < max_retries:
